@@ -12,10 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppEasyTour"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDcsnAM4HN3kKSVA2PjkguYhEyLKvI2ZXQ" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.AppEasyTour">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
