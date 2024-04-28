@@ -3,6 +3,7 @@ package edu.unicauca.appeasytour
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapProperties
@@ -21,7 +22,6 @@ class MapActivity {
         }
 
     }
-
 
 
     }

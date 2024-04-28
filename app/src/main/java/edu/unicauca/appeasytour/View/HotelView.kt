@@ -21,23 +21,31 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import edu.unicauca.appeasytour.Model.Hotel
-import edu.unicauca.appeasytour.R
+import edu.unicauca.appeasytour.Repository.HotelRepository
 
 @Composable
-fun hotelesView(){
+fun hotelesView(hotelRepository: HotelRepository){
 
-    val hoteles = listOf(
+    val hoteles = hotelRepository.getAllItemsStream()
+
+    /*
+        listOf(
         Hotel("Hotel Camino Real", "COP 282.683", "Desayuno incluido","\u2764 ❤ ❤ ", R.drawable.hcaminoreal),
         Hotel("Hotel La Herreria Colonial", "COP 350.000", "Desayuno incluido","\u2764 ❤ ❤",R.drawable.hherreriacolonial),
         Hotel("Hotel SM", "COP 150.000", "Desayuno incluido","\u2764 ❤ ❤ ❤",R.drawable.hsm),
         Hotel("Hotel Dann Monasterio", "COP 150.000", "Desayuno incluido","\u2764 ❤ ❤ ❤ ❤",R.drawable.hotel_dann_monasterio__popay_n_02)
     )
+
+*/
     LazyColumn {
-        items(hoteles) { hotel -> HotelCardView(hotel=hotel)
+        items(hoteles) { hotel -> HotelCardView(hotel = hotel)
         }
     }
 
+
 }
+
+
 @Composable
 fun HotelCardView(hotel: Hotel) {
     Card(
@@ -87,5 +95,5 @@ fun HotelCardView(hotel: Hotel) {
 @Composable
 @Preview
 fun PrewHotels(){
-    hotelesView()
+  //  hotelesView()
 }
