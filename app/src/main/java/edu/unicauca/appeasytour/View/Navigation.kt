@@ -21,9 +21,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.google.android.gms.common.api.Scope
+import edu.unicauca.appeasytour.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -107,7 +109,7 @@ fun Navigation() {
                     NavigationBarItem(
                         icon = {
                             Icon(
-                                imageVector = Icons.Default.Home,
+                                painter = painterResource(R.drawable.calendar_days),
                                 contentDescription = null
                             )
                         },

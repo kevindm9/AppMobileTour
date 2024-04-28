@@ -1,6 +1,8 @@
 package edu.unicauca.appeasytour.View
 
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -18,12 +20,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import edu.unicauca.appeasytour.R
+
 @Composable
 fun NavigationSup(modifier: Modifier = Modifier) {
     var currentScreen by remember { mutableStateOf("Hotel") }
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
-        modifier = modifier.fillMaxWidth().padding(8.dp)
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(8.dp)
 
     )
     {
@@ -45,7 +53,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
         NavigationBarItem(
             icon = {
                 Icon(
-                    imageVector = Icons.Filled.Home,
+                    painter = painterResource(R.drawable.hotel__1_),
                     contentDescription = null
                 )
             },
@@ -60,7 +68,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
         NavigationBarItem(
             icon = {
                 Icon(
-                    imageVector = Icons.Filled.Home,
+                    painter = painterResource(R.drawable.utensils_crossed__1_),
                     contentDescription = null
                 )
             },
@@ -73,7 +81,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
         NavigationBarItem(
             icon = {
                 Icon(
-                    imageVector = Icons.Rounded.Home,
+                    painter = painterResource(R.drawable.goal__1_),
                     contentDescription = null
                 )
             },
@@ -99,10 +107,22 @@ fun NavigationSup(modifier: Modifier = Modifier) {
             onClick = {}
         )*/
     }
-    SearchBar();
-    FilterAndSortComponent();
+    Column(
+        modifier = Modifier.padding(16. dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        SearchBar();
+        FilterAndSortComponent();
+    }
+
     when (currentScreen) {
         "Hotel" -> hotelesView()
         // Agrega casos para otras pantallas si es necesario
     }
+}
+
+@Preview
+@Composable
+fun preNavSup(){
+    NavigationSup()
 }
