@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    //id de Ksp para base de datos
+    id("org.jetbrains.kotlin.kapt")
+    id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
 }
 
 android {
@@ -58,6 +61,10 @@ dependencies {
     implementation ("com.google.android.gms:play-services-auth:21.1.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
 
+    //Room
+    implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
+    kapt("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
+    implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

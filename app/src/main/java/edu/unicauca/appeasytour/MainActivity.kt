@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.android.libraries.places.api.Places
+import edu.unicauca.appeasytour.View.Navigation
 import edu.unicauca.appeasytour.ui.theme.AppEasyTourTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,6 +32,8 @@ class MainActivity : ComponentActivity() {
                     val mapActivity = MapActivity()
                     // Llamar a MapScreen
                     mapActivity.MapScreen()
+                    //MapActivity().MyGoogleMaps()
+                    Navigation()
                 }
             }
         }
