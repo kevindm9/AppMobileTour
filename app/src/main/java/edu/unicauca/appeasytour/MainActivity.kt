@@ -30,11 +30,12 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     // Call MyGoogleMaps function from MapActivity
-                    val mapActivity = MapActivity()
+                    //val mapActivity = MapActivity()
                     // Llamar a MapScreen
-                    mapActivity.MapScreen()
+                    //mapActivity.MapScreen()
                     //MapActivity().MyGoogleMaps()
-                    LoginScreen()
+                    Navigation()
+                    //LoginScreen()
                 }
             }
         }

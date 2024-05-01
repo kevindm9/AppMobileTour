@@ -20,12 +20,17 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import edu.unicauca.appeasytour.R
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
+import edu.unicauca.appeasytour.View.LoginScreen.LoginScreen
+
 
 
 @Composable
-fun cuentaView() {
+fun cuentaView(navController:NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -45,7 +50,7 @@ fun cuentaView() {
             ) {
                 Text("Inicia sesión para gestionar tus reservas y planificar fácilmente tu próximo viaje")
                 Button(
-                    onClick = { /* Handle login here */ },
+                    onClick = { navController.navigate("login")},
                     modifier = Modifier
                         .width(200.dp)
                         .height(56.dp)
@@ -97,10 +102,20 @@ fun cuentaView() {
     }
 }
 
+@Composable
+fun AppCuenta() {
+
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "cuentaView") {
+        composable("cuentaView") { cuentaView(navController) }
+        composable("login") { LoginScreen() }
+    }
+}
 
 @Preview
 @Composable
 
 fun preCuenta(){
-    cuentaView()
+    AppCuenta()
 }

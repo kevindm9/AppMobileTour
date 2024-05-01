@@ -39,7 +39,7 @@ fun Navigation() {
                 TopAppBar(
 
                     navigationIcon = {
-                        IconButton(onClick = { /* do something */ }) {
+                        IconButton(onClick = { currentScreen = "Home" }) {
                             Icon(
                                 imageVector = Icons.Filled.ArrowBack,
                                 contentDescription = "Localized description"
@@ -48,10 +48,18 @@ fun Navigation() {
                     },
                     title = {
                         Text(
-                            "Hospedaje",
+                            "Easy Tour",
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
+                    },
+                    actions = {
+                        IconButton(onClick = { /* do something */ }) {
+                            Icon(
+                                painter = painterResource(R.drawable.logo),
+                                contentDescription = "Localized description"
+                            )
+                        }
                     },
 
                     )
@@ -154,7 +162,7 @@ fun Navigation() {
                     NavigationSup()
                 }
 
-                "Account" -> cuentaView()
+                "Account" -> AppCuenta()
             }
         }
 
