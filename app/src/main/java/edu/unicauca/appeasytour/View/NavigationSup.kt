@@ -79,7 +79,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
                 Text("Restaurante")
             },
             selected = false,
-            onClick = {}
+            onClick = {currentScreen = "Restaurante"}
         )
         NavigationBarItem(
             icon = {
@@ -125,6 +125,8 @@ fun NavigationSup(modifier: Modifier = Modifier) {
     when (currentScreen) {
         "Hotel" -> hotelesView()
         "Puntos" ->  LoginScreen()
+        "Restaurante"-> RestaurantView()
+
         // Agrega casos para otras pantallas si es necesario
     }
 }
