@@ -1,6 +1,9 @@
 package com.example.aplicacionesmoviles
 
 import android.annotation.SuppressLint
+import android.util.Log
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,25 +25,59 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.GoogleAuthProvider
+import edu.unicauca.appeasytour.View.LoginScreen.LoginScreenViewModel
 import edu.unicauca.appeasytour.ui.theme.BlueGray
 import edu.unicauca.appeasytour.ui.theme.LightBlueWhite
 
 
 @Composable
 fun SocialMediaLogin(
+    viewModel: LoginScreenViewModel = viewModel(),
     modifier: Modifier =Modifier,
     @DrawableRes icon:Int,
     text:String,
     onclick:()->Unit
 ) {
+    val launcher= rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
+        val task= GoogleSignIn.getSignedInAccountFromIntent(it.data)
+        try {
+            val account= task.getResult(ApiException::class.java)
+            val credential= GoogleAuthProvider.getCredential(account.idToken, null)
+            viewModel.signInWithGoogleCredential(credential){
+                Log.d("FB","Ingreso con google")
+            }
+        }catch (ex:Exception){
+            Log.d("FB","Error")
+        }
+
+
+    }
+    val token="161501915446-cbot3ashbnbj17ig1j4rkr9m991h1psi.apps.googleusercontent.com"
+    val context= LocalContext.current
     Row(
         modifier = Modifier
             .clip(shape = RoundedCornerShape(4.dp))
             .socialMedia()
             .clickable { onclick() }
-            .height(40.dp),
+            .height(40.dp)
+            .clickable { val opciones= GoogleSignInOptions.Builder(
+                GoogleSignInOptions.DEFAULT_SIGN_IN
+            )
+                .requestIdToken(token)
+                .requestEmail()
+                .build()
+                       val googleSignInClient = GoogleSignIn.getClient(context,opciones)
+                launcher.launch(googleSignInClient.signInIntent)
+                       },
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ){

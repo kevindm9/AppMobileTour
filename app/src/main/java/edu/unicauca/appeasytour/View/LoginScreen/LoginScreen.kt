@@ -4,6 +4,7 @@ package edu.unicauca.appeasytour.View.LoginScreen
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -43,6 +44,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aplicacionesmoviles.SocialMediaLogin
 import com.example.aplicacionesmoviles.UsuarioInput
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.GoogleAuthProvider
 import edu.unicauca.appeasytour.R
 import edu.unicauca.appeasytour.ui.theme.Black
 import edu.unicauca.appeasytour.ui.theme.BlueGray
