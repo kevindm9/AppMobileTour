@@ -2,6 +2,8 @@ package edu.unicauca.appeasytour.View.LoginScreen
 
 //import androidx.compose.foundation.layout.FlowColumnScopeInstance.align
 import android.util.Log
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -38,6 +40,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aplicacionesmoviles.SocialMediaLogin
 import com.example.aplicacionesmoviles.UsuarioInput
 import edu.unicauca.appeasytour.R
@@ -49,7 +52,7 @@ import edu.unicauca.appeasytour.ui.theme.Roboto
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginScreen(
-    viewModel: LoginScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: LoginScreenViewModel = viewModel()
 ) {
     val usuario = rememberSaveable { mutableStateOf("") }
     val password = rememberSaveable { mutableStateOf("") }
@@ -57,6 +60,7 @@ fun LoginScreen(
     val valido = remember(usuario.value, password.value) {
         usuario.value.trim().isNotEmpty() && password.value.trim().isNotEmpty()
     }
+
     Surface{
         Column(modifier= Modifier.fillMaxSize()){
             TopSection()

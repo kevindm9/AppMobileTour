@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     // Llamar a MapScreen
                     mapActivity.MapScreen()
                     //MapActivity().MyGoogleMaps()
-                    LoginScreen()
+                    Navigation()
                 }
             }
         }
