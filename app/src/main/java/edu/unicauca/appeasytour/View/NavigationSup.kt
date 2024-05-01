@@ -22,10 +22,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import edu.unicauca.appeasytour.R
+import edu.unicauca.appeasytour.View.LoginScreen.LoginScreen
 
 @Composable
 fun NavigationSup(modifier: Modifier = Modifier) {
+    val navController = rememberNavController()
     var currentScreen by remember { mutableStateOf("Hotel") }
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
@@ -89,8 +92,12 @@ fun NavigationSup(modifier: Modifier = Modifier) {
                 Text("Puntos")
             },
             selected = false,
-            onClick = {}
+            onClick = {
+                currentScreen = "Puntos"
+            }
         )
+
+
 
         /*NavigationBarItem(
             icon = {
@@ -117,6 +124,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
 
     when (currentScreen) {
         "Hotel" -> hotelesView()
+        "Puntos" ->  LoginScreen()
         // Agrega casos para otras pantallas si es necesario
     }
 }

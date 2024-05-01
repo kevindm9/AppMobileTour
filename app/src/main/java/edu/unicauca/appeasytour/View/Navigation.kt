@@ -34,7 +34,6 @@ fun Navigation() {
         topBar={
             Column{
                 TopAppBar(
-
                     navigationIcon = {
                         IconButton(onClick = { /* do something */ }) {
                             Icon(
@@ -134,7 +133,8 @@ fun Navigation() {
                             )
                         },
                         selected = false,
-                        onClick = {}
+                        onClick = {
+                        }
                     )
 
                 },
