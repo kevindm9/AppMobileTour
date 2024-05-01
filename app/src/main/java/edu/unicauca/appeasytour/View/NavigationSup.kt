@@ -119,7 +119,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         SearchBar();
-        FilterAndSortComponent();
+
     }
 
     when (currentScreen) {

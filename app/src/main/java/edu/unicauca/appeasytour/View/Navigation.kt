@@ -24,16 +24,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.google.android.gms.common.api.Scope
 import edu.unicauca.appeasytour.R
-
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation() {
+    var currentScreen by remember { mutableStateOf("Home") }
+
     Scaffold(
         topBar={
             Column{
                 TopAppBar(
+
                     navigationIcon = {
                         IconButton(onClick = { /* do something */ }) {
                             Icon(
@@ -51,7 +55,7 @@ fun Navigation() {
                     },
 
                     )
-                NavigationSup();
+
 
             }
 
@@ -72,8 +76,8 @@ fun Navigation() {
                                 text = "Inicio"
                             )
                         },
-                        selected = false,
-                        onClick = {}
+                        selected = currentScreen == "Home",
+                        onClick = { currentScreen = "Home" }
                     )
                     NavigationBarItem(
                         icon = {
@@ -132,9 +136,8 @@ fun Navigation() {
                                 text = "Mi cuenta"
                             )
                         },
-                        selected = false,
-                        onClick = {
-                        }
+                        selected = currentScreen == "Account" ,
+                        onClick = {currentScreen = "Account" }
                     )
 
                 },
@@ -146,7 +149,13 @@ fun Navigation() {
             modifier = Modifier.padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
+            when (currentScreen) {
+                "Home" -> {
+                    NavigationSup()
+                }
 
+                "Account" -> cuentaView()
+            }
         }
 
     }
