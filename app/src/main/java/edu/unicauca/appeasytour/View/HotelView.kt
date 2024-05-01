@@ -27,12 +27,7 @@ import edu.unicauca.appeasytour.Repository.HotelRepository
 @Composable
 fun hotelesView(){
 
-    FilterAndSortComponent();
-
-    val hoteles =
-
-
-        listOf(
+    val hoteles = listOf(
         Hotel("Hotel Camino Real", "COP 282.683", "Desayuno incluido","\u2764 ❤ ❤ ", R.drawable.hcaminoreal),
         Hotel("Hotel La Herreria Colonial", "COP 350.000", "Desayuno incluido","\u2764 ❤ ❤",R.drawable.hherreriacolonial),
         Hotel("Hotel SM", "COP 150.000", "Desayuno incluido","\u2764 ❤ ❤ ❤",R.drawable.hsm),
