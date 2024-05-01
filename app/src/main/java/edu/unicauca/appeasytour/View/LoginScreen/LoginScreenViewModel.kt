@@ -18,8 +18,7 @@ class LoginScreenViewModel: ViewModel() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener {authResult->
                     Log.d("FB", "" +
-                            "singInWithEmailAndPassword Logueado!!!: ${authResult.toString()}")
-                    home()
+                            "singInWithEmailAndPassword Logueado!!!: ${authResult}")
                 }
                 .addOnFailureListener{ex->
                     // código cuando falla

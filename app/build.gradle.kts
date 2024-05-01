@@ -4,7 +4,7 @@ plugins {
     //id de Ksp para base de datos
     id("org.jetbrains.kotlin.kapt")
     id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
-    id("com.google.gms.google-services") version "4.3.15" apply false
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -56,8 +56,9 @@ android {
 dependencies {
 
     //dependencies de firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
 
     //dependencies para el map
     implementation ("com.google.maps.android:maps-compose:2.11.2")

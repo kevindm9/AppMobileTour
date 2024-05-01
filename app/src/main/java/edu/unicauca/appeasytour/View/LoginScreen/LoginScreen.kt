@@ -1,6 +1,7 @@
 package edu.unicauca.appeasytour.View.LoginScreen
 
 //import androidx.compose.foundation.layout.FlowColumnScopeInstance.align
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -20,7 +21,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -34,14 +39,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aplicacionesmoviles.SocialMediaLogin
+import com.example.aplicacionesmoviles.UsuarioInput
 import edu.unicauca.appeasytour.R
 import edu.unicauca.appeasytour.ui.theme.Black
 import edu.unicauca.appeasytour.ui.theme.BlueGray
 import edu.unicauca.appeasytour.ui.theme.Roboto
 
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    viewModel: LoginScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+) {
+    val usuario = rememberSaveable { mutableStateOf("") }
+    val password = rememberSaveable { mutableStateOf("") }
+    val passwordVisible = rememberSaveable { mutableStateOf(false) }
+    val valido = remember(usuario.value, password.value) {
+        usuario.value.trim().isNotEmpty() && password.value.trim().isNotEmpty()
+    }
     Surface{
         Column(modifier= Modifier.fillMaxSize()){
             TopSection()
@@ -52,7 +67,26 @@ fun LoginScreen() {
                 .fillMaxSize()
                 .padding(horizontal = 30.dp)){
 
-                CamposDeRellenar()
+                UsuarioInput(
+                    usuarioState = usuario,
+                    labelId = "Usuario",
+                )
+                Spacer(modifier = Modifier.height(15.dp))
+                PasswordInput(
+                    passwordState = password,
+                    labelId = "Password",
+                    passwordVisible = passwordVisible
+                )
+                Spacer(modifier = Modifier.height(30.dp))
+
+                ButtonConfiguration(
+                    TextId = "Ingresar",
+                    inputValido = valido,
+                    email = usuario.value,
+                    password = password.value,
+                    viewModel = viewModel
+                )
+
                 Spacer(modifier = Modifier.height(30.dp))
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -65,8 +99,9 @@ fun LoginScreen() {
 
                     Row(
 
-                        modifier= Modifier.fillMaxWidth()
-                            .padding(horizontal=75.dp),
+                        modifier= Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 75.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ){
                         SocialMediaLogin(icon = R.drawable.facebook,
@@ -127,33 +162,36 @@ fun LoginScreen() {
     }
 }
 
-@Composable
-private fun CamposDeRellenar() {
-    LoginTextField(
-        modifier = Modifier.fillMaxWidth(),
-        label = "Usuario",
 
-        )
-    Spacer(modifier = Modifier.height(15.dp))
-    LoginTextField(
-        label = "Contraseña",
-        modifier = Modifier.fillMaxWidth()
-    )
-    Spacer(modifier = Modifier.height(15.dp))
+@Composable
+fun ButtonConfiguration(
+    viewModel: LoginScreenViewModel,
+    TextId: String,
+    inputValido: Boolean,
+    email: String,
+    password: String,
+) {
     Button(
         modifier = Modifier
             .fillMaxWidth()
             .height(40.dp),
-        onClick = {},
+        onClick = {
+            viewModel.signInWithEmailandPassword(email, password) {
+                /*navController.navigate(route = AppScreens.HotelView.route)*/
+                Log.d("Logueado","FB")
+            }},
+        enabled = inputValido,
         colors = ButtonDefaults.buttonColors(
             containerColor = if (isSystemInDarkTheme()) BlueGray else Black,
             contentColor = Color.White
         ),
         shape = RoundedCornerShape(size = 4.dp)
     ) {
-        Text(text = "Ingresar",
+        Text(
+            text = TextId,
             style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Medium),
-            onTextLayout = {})
+            onTextLayout = {}
+        )
     }
 }
 
@@ -208,10 +246,3 @@ private fun TopSection() {
 }
 
 
-@Preview
-@Composable
-fun PreviewLoginScreen(){
-    MaterialTheme{
-        LoginScreen()
-    }
-}

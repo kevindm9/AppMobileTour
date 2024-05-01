@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import edu.unicauca.appeasytour.Model.Hotel
+import edu.unicauca.appeasytour.R
 import edu.unicauca.appeasytour.Repository.HotelRepository
 
 @Composable
