@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import edu.unicauca.appeasytour.R
 
 @Composable
 fun SearchBar(
@@ -31,7 +32,7 @@ fun SearchBar(
             focusedContainerColor = MaterialTheme.colorScheme.surface
         ),
         placeholder = {
-            Text("Buscar")
+            Text(stringResource(R.string.Search))
         },
         modifier = modifier
             .fillMaxWidth()
