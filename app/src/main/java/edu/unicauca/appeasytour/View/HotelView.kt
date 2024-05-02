@@ -28,10 +28,10 @@ import edu.unicauca.appeasytour.Repository.HotelRepository
 fun hotelesView(){
 
     val hoteles = listOf(
-        Hotel("Hotel Camino Real", "COP 282.683", "Desayuno incluido","\u2764 ❤ ❤ ", R.drawable.hcaminoreal),
-        Hotel("Hotel La Herreria Colonial", "COP 350.000", "Desayuno incluido","\u2764 ❤ ❤",R.drawable.hherreriacolonial),
-        Hotel("Hotel SM", "COP 150.000", "Desayuno incluido","\u2764 ❤ ❤ ❤",R.drawable.hsm),
-        Hotel("Hotel Dann Monasterio", "COP 150.000", "Desayuno incluido","\u2764 ❤ ❤ ❤ ❤",R.drawable.hotel_dann_monasterio__popay_n_02)
+        Hotel("Hotel Camino Real", "COP 282.683", "Desayuno incluido",4.0f, R.drawable.hcaminoreal),
+        Hotel("Hotel La Herreria Colonial", "COP 350.000", "Desayuno incluido",3.5f,R.drawable.hherreriacolonial),
+        Hotel("Hotel SM", "COP 150.000", "Desayuno incluido",2.5f,R.drawable.hsm),
+        Hotel("Hotel Dann Monasterio", "COP 150.000", "Desayuno incluido",5.0f,R.drawable.hotel_dann_monasterio__popay_n_02)
     )
 
 
@@ -77,10 +77,7 @@ fun HotelCardView(hotel: Hotel) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Text(text = hotel.calificacion,
-                    modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp),
-                    style = MaterialTheme.typography.bodyMedium)
-                Spacer(modifier = Modifier.height(8.dp))
+                Rating(rating = hotel.calificacion)
             }
             Text(text = hotel.desayunoIncluido,
                 modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp),
@@ -93,5 +90,5 @@ fun HotelCardView(hotel: Hotel) {
 @Composable
 @Preview
 fun PrewHotels(){
-  //  hotelesView()
+   hotelesView()
 }

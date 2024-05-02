@@ -61,44 +61,50 @@ fun cuentaView(navController:NavController) {
             }
         }
 
-        Button(
-            onClick = { /* Handle preferences here */ },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            shape= RectangleShape
+       Column(                modifier = Modifier
+           .fillMaxWidth()
+           .padding(16.dp),
+           verticalArrangement = Arrangement.spacedBy(16.dp),
+           ) {
+           Button(
+               onClick = { /* Handle preferences here */ },
+               modifier = Modifier
+                   .fillMaxWidth()
+                   .height(56.dp),
+               shape= RectangleShape
 
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.settings),
-                    contentDescription = null
-                )
-                Text("Preferencias")
-            }
-        }
-        Button(
-            onClick = { /* Handle preferences here */ },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            shape= RectangleShape
+           ) {
+               Row(
+                   modifier = Modifier.fillMaxWidth(),
+                   horizontalArrangement = Arrangement.Start
+               ) {
+                   Icon(
+                       painter = painterResource(R.drawable.settings),
+                       contentDescription = null
+                   )
+                   Text("  Preferencias")
+               }
+           }
+           Button(
+               onClick = { navController.navigate("about") },
+               modifier = Modifier
+                   .fillMaxWidth()
+                   .height(56.dp),
+               shape= RectangleShape
 
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.circle_help),
-                    contentDescription = null
-                )
-                Text("Acerca de")
-            }
-        }
+           ) {
+               Row(
+                   modifier = Modifier.fillMaxWidth(),
+                   horizontalArrangement = Arrangement.Start
+               ) {
+                   Icon(
+                       painter = painterResource(R.drawable.circle_help),
+                       contentDescription = null
+                   )
+                   Text("  Acerca de")
+               }
+           }
+       }
     }
 }
 
@@ -110,6 +116,7 @@ fun AppCuenta() {
     NavHost(navController = navController, startDestination = "cuentaView") {
         composable("cuentaView") { cuentaView(navController) }
         composable("login") { LoginScreen() }
+        composable("about") { about() }
     }
 }
 

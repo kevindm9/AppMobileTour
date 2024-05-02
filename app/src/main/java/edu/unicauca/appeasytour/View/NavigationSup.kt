@@ -13,6 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -20,11 +21,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import edu.unicauca.appeasytour.R
 import edu.unicauca.appeasytour.View.LoginScreen.LoginScreen
+import edu.unicauca.appeasytour.ui.theme.logoSelect
 
 @Composable
 fun NavigationSup(modifier: Modifier = Modifier) {
@@ -48,10 +52,17 @@ fun NavigationSup(modifier: Modifier = Modifier) {
                 )
             },
             label = {
-                Text("Popular")
+                Text(stringResource(id = R.string.Popular))
             },
             selected = false,
-            onClick = {}
+            onClick = {},
+            colors = NavigationBarItemDefaults.colors(
+
+                selectedIconColor = MaterialTheme.colorScheme.logoSelect,
+                unselectedIconColor = MaterialTheme.colorScheme.onSurface,
+                selectedTextColor = MaterialTheme.colorScheme.logoSelect, // Color del texto cuando está seleccionado
+                unselectedTextColor = MaterialTheme.colorScheme.onSurface // Color del texto cuando no está seleccionado
+            )
         )
         NavigationBarItem(
             icon = {
@@ -61,13 +72,21 @@ fun NavigationSup(modifier: Modifier = Modifier) {
                 )
             },
             label = {
-                Text("hoteles")
+                Text(stringResource(id = R.string.Hotel))
             },
-            selected = true,
+            selected = currentScreen == "Hotel",
             onClick = {
                 currentScreen = "Hotel"
-            }
+            },
+            colors = NavigationBarItemDefaults.colors(
+
+                selectedIconColor = MaterialTheme.colorScheme.logoSelect,
+                unselectedIconColor = MaterialTheme.colorScheme.onSurface,
+                selectedTextColor = MaterialTheme.colorScheme.logoSelect, // Color del texto cuando está seleccionado
+                unselectedTextColor = MaterialTheme.colorScheme.onSurface // Color del texto cuando no está seleccionado
+            )
         )
+
         NavigationBarItem(
             icon = {
                 Icon(
@@ -76,10 +95,17 @@ fun NavigationSup(modifier: Modifier = Modifier) {
                 )
             },
             label = {
-                Text("Restaurante")
+                Text(stringResource(id = R.string.Restaurant))
             },
-            selected = false,
-            onClick = {currentScreen = "Restaurante"}
+            selected = currentScreen == "Restaurante",
+            onClick = {currentScreen = "Restaurante"},
+            colors = NavigationBarItemDefaults.colors(
+
+                selectedIconColor = MaterialTheme.colorScheme.logoSelect,
+                unselectedIconColor = MaterialTheme.colorScheme.onSurface,
+                selectedTextColor = MaterialTheme.colorScheme.logoSelect, // Color del texto cuando está seleccionado
+                unselectedTextColor = MaterialTheme.colorScheme.onSurface // Color del texto cuando no está seleccionado
+            )
         )
         NavigationBarItem(
             icon = {
@@ -89,12 +115,19 @@ fun NavigationSup(modifier: Modifier = Modifier) {
                 )
             },
             label = {
-                Text("Puntos")
+                Text(stringResource(id = R.string.Target))
             },
-            selected = false,
+            selected = currentScreen == "Puntos",
             onClick = {
                 currentScreen = "Puntos"
-            }
+            },
+            colors = NavigationBarItemDefaults.colors(
+
+                selectedIconColor = MaterialTheme.colorScheme.logoSelect,
+                unselectedIconColor = MaterialTheme.colorScheme.onSurface,
+                selectedTextColor = MaterialTheme.colorScheme.logoSelect, // Color del texto cuando está seleccionado
+                unselectedTextColor = MaterialTheme.colorScheme.onSurface // Color del texto cuando no está seleccionado
+            )
         )
 
 
@@ -115,8 +148,8 @@ fun NavigationSup(modifier: Modifier = Modifier) {
         )*/
     }
     Column(
-        modifier = Modifier.padding(16. dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier.padding(8. dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         SearchBar();
 

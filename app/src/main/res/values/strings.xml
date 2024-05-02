@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">AppEasyTour</string>
     <string name="Search">Search</string>
-    <string name="inicio_sesion">Iniciar Sesion</string>
+    <string name="inicio_sesion">Login</string>
     <string name="coltour">Coltour\n</string>
     <string name="vadi">Couture</string>
     <string name="couture">Couture\n</string>
+    <string name="Popular">Popular</string>
+    <string name="Hotel">Hotel</string>
+    <string name="Restaurant">Restaurant</string>
+    <string name="Target">Target</string>
+    <string name="Home">Home</string>
+    <string name="Quality">Quality</string>
+    <string name="To_plan">To plan</string>
+    <string name="Account">Account</string>
 </resources>
