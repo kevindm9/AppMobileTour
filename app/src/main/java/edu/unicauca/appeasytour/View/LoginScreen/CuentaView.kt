@@ -86,7 +86,7 @@ fun cuentaView(navController:NavController) {
                }
            }
            Button(
-               onClick = { navController.navigate(Screens.about.route) },
+               onClick = { navController.navigate(Screens.About.route) },
                modifier = Modifier
                    .fillMaxWidth()
                    .height(56.dp),

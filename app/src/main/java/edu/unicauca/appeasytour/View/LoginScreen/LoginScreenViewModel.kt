@@ -79,6 +79,7 @@ class LoginScreenViewModel: ViewModel() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
+                        Log.d("TAG", "logueado")
                         home()
                     } else {
                         Log.d("TAG", "createUserWithEmailAndPassword: ${task.exception}")

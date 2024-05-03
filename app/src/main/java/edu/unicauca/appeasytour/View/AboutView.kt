@@ -15,10 +15,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.Image
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavHostController
 
 
 @Composable
-fun about(){
+fun about(navController: NavHostController){
     val context = LocalContext.current
     val versionName = context.packageManager.getPackageInfo(context.packageName, 0).versionName
     Card(
@@ -54,10 +55,4 @@ fun about(){
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun PrevAbout(){
-    about()
 }

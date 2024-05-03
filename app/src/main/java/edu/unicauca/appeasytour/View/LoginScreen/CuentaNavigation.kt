@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import edu.unicauca.appeasytour.View.CommentScreen.Views.AddScreen
 import edu.unicauca.appeasytour.View.CommentScreen.Views.CommentsScreen
 import edu.unicauca.appeasytour.View.CommentScreen.Views.UpdateScreen
+import edu.unicauca.appeasytour.View.about
 import edu.unicauca.appeasytour.View.cuentaView
 
 @Composable
@@ -25,6 +26,9 @@ fun LoginNavigation(navController: NavHostController) {
         composable(route =Screens.RegistroScreen.route){
             RegistroScreen(navController)
         }
+        composable(route =Screens.About.route){
+            about(navController)
+        }
 
     }
 }
@@ -34,5 +38,7 @@ sealed class Screens(val route:String){
     data object LoginScreen:Screens("loginScreen")
 
     data object RegistroScreen:Screens("RegistroScreen")
+
+    data object About:Screens("about")
 
 }
