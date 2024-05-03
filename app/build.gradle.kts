@@ -5,6 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.kapt")
     id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
     id("com.google.gms.google-services")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -54,6 +55,12 @@ android {
 }
 
 dependencies {
+
+    //dependencies de Hilt
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:dagger-compiler:2.48.1")
+    kapt("com.google.dagger:hilt-compiler:2.48.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     //dependencies de firebase
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
