@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
@@ -15,7 +16,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -51,10 +55,12 @@ private val HotelesRecomendados = listOf(
     R.drawable.hotel_torre_real to R.string.hotel_torre_real,
 ).map {DrawableStringPair(it.first, it.second) }
 
+
 @Composable
 fun Tarjetas(
     @DrawableRes drawable: Int,
     @StringRes title: Int,
+    rating: Float, // Nuevo parámetro para la calificación
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -77,13 +83,30 @@ fun Tarjetas(
                 stringResource(id = title),
                 fontStyle= FontStyle.Italic,
                 modifier = Modifier
-                    .paddingFromBaseline(top = 24.dp, bottom = 24.dp)
+                    .paddingFromBaseline(top = 8.dp, bottom = 8.dp)
                     .padding(horizontal = 2.dp)
 
+            )
+            Rating(rating = rating) // Mostrar la calificación
+        }
+    }
+}
+
+
+@Composable
+fun Rating(rating: Float) {
+    Row {
+        repeat(5) { index ->
+            Icon(
+                imageVector = Icons.Default.Favorite,
+                contentDescription = null,
+                tint = if (rating >= index + 1) Color.Red else Color.Gray,
+                modifier = Modifier.size(24.dp)
             )
         }
     }
 }
+
 
 @Composable
 fun Button(navHostController: NavHostController){
@@ -110,7 +133,8 @@ fun FilaInteres(
         items (DestinosTuristicos){
                 item->Tarjetas(
             drawable= item.drawable,
-            title= item.text
+            title= item.text,
+            rating = 3.5f // Aquí deberías proporcionar la calificación real del destino turístico
         )
         }
 
@@ -130,7 +154,8 @@ fun FilaHoteles(
                 item->
             Tarjetas(
                 drawable= item.drawable,
-                title= item.text
+                title= item.text,
+                rating = 4.0f // Aquí deberías proporcionar la calificación real del hotel
             )
         }
 

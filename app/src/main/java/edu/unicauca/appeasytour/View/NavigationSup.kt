@@ -27,6 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import edu.unicauca.appeasytour.R
+import edu.unicauca.appeasytour.View.PopularScreen.NavigationPopular
 import edu.unicauca.appeasytour.View.LoginScreen.LoginNavigation
 import edu.unicauca.appeasytour.View.LoginScreen.LoginScreen
 import edu.unicauca.appeasytour.View.PopularScreen.NavigationPopular
