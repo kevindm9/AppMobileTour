@@ -1,10 +1,6 @@
 package edu.unicauca.appeasytour.View.LoginScreen
 
-//import androidx.compose.foundation.layout.FlowColumnScopeInstance.align
 import android.util.Log
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -38,15 +34,11 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aplicacionesmoviles.SocialMediaLogin
 import com.example.aplicacionesmoviles.UsuarioInput
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.GoogleAuthProvider
 import edu.unicauca.appeasytour.R
 import edu.unicauca.appeasytour.ui.theme.Black
 import edu.unicauca.appeasytour.ui.theme.BlueGray
@@ -95,6 +87,17 @@ fun LoginScreen(
                     viewModel = viewModel
                 )
 
+                Spacer(modifier = Modifier.height(10.dp))
+
+                ButtonConfiguration(
+                    TextId = "Registrar",
+                    inputValido = valido,
+                    email = usuario.value,
+                    password = password.value,
+                    viewModel = viewModel,
+                    isRegisterButton = true
+                )
+
                 Spacer(modifier = Modifier.height(30.dp))
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -131,35 +134,35 @@ fun LoginScreen(
                         .fillMaxWidth(),
                     contentAlignment = Alignment.BottomCenter
                 ){
-                        Text(text = buildAnnotatedString {
-                            withStyle(
-                                style = SpanStyle(
-                                    color= Color(0xFF94A3B8),
-                                    fontSize = 14.sp,
-                                    fontFamily = Roboto,
-                                    fontWeight = FontWeight.Normal
+                    Text(text = buildAnnotatedString {
+                        withStyle(
+                            style = SpanStyle(
+                                color= Color(0xFF94A3B8),
+                                fontSize = 14.sp,
+                                fontFamily = Roboto,
+                                fontWeight = FontWeight.Normal
 
 
-                                )
-                            ){
-                                append("Olvidaste tu contraseña?")
-                            }
+                            )
+                        ){
+                            append("Olvidaste tu contraseña?")
+                        }
 
-                            withStyle(
-                                style = SpanStyle(
-                                    color= uiColor,
-                                    fontSize = 14.sp,
-                                    fontFamily = Roboto,
-                                    fontWeight = FontWeight.Normal
+                        withStyle(
+                            style = SpanStyle(
+                                color= uiColor,
+                                fontSize = 14.sp,
+                                fontFamily = Roboto,
+                                fontWeight = FontWeight.Normal
 
 
-                                )
-                            ){
-                                append(" ")
-                                append("Recuperala")
-                            }
+                            )
+                        ){
+                            append(" ")
+                            append("Recuperala")
+                        }
 
-                        })
+                    })
                 }
 
 
@@ -170,7 +173,6 @@ fun LoginScreen(
     }
 }
 
-
 @Composable
 fun ButtonConfiguration(
     viewModel: LoginScreenViewModel,
@@ -178,16 +180,23 @@ fun ButtonConfiguration(
     inputValido: Boolean,
     email: String,
     password: String,
+    isRegisterButton: Boolean = false
 ) {
     Button(
         modifier = Modifier
             .fillMaxWidth()
             .height(40.dp),
         onClick = {
-            viewModel.signInWithEmailandPassword(email, password) {
-                /*navController.navigate(route = AppScreens.HotelView.route)*/
-                Log.d("Logueado","FB")
-            }},
+            if (isRegisterButton) {
+                viewModel.createUserWithEmailAndPassword(email, password) {
+                    Log.d("Registrado", "Registrado exitosamente")
+                }
+            } else {
+                viewModel.signInWithEmailandPassword(email, password) {
+                    Log.d("Logueado", "FB")
+                }
+            }
+        },
         enabled = inputValido,
         colors = ButtonDefaults.buttonColors(
             containerColor = if (isSystemInDarkTheme()) BlueGray else Black,
@@ -224,19 +233,19 @@ private fun TopSection() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-                Text(
-                    text = stringResource(id = R.string.coltour),
-                    style = MaterialTheme.typography.headlineLarge.copy(fontSize = 35.sp),
-                    color = uiColor,
-                    onTextLayout ={}
-                )
-                Spacer(modifier = Modifier.height(5.dp))
-              /*  Text(
-                    text = stringResource(id = R.string.validacion),
-                    style = MaterialTheme.typography.titleMedium,
-                    color = uiColor,
-                    onTextLayout ={}
-                )*/
+            Text(
+                text = stringResource(id = R.string.coltour),
+                style = MaterialTheme.typography.headlineLarge.copy(fontSize = 35.sp),
+                color = uiColor,
+                onTextLayout ={}
+            )
+            Spacer(modifier = Modifier.height(5.dp))
+            /*  Text(
+                  text = stringResource(id = R.string.validacion),
+                  style = MaterialTheme.typography.titleMedium,
+                  color = uiColor,
+                  onTextLayout ={}
+              )*/
 
 
         }
