@@ -27,13 +27,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import edu.unicauca.appeasytour.R
+import edu.unicauca.appeasytour.View.LoginScreen.LoginNavigation
 import edu.unicauca.appeasytour.View.LoginScreen.LoginScreen
+import edu.unicauca.appeasytour.View.PopularScreen.NavigationPopular
+import edu.unicauca.appeasytour.View.PopularScreen.Union
 import edu.unicauca.appeasytour.ui.theme.logoSelect
 
 @Composable
 fun NavigationSup(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
-    var currentScreen by remember { mutableStateOf("Hotel") }
+    var currentScreen by remember { mutableStateOf("Popular") }
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
         modifier = modifier
@@ -55,7 +58,9 @@ fun NavigationSup(modifier: Modifier = Modifier) {
                 Text(stringResource(id = R.string.Popular))
             },
             selected = false,
-            onClick = {},
+            onClick = {
+                currentScreen="Popular"
+            },
             colors = NavigationBarItemDefaults.colors(
 
                 selectedIconColor = MaterialTheme.colorScheme.logoSelect,
@@ -63,6 +68,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
                 selectedTextColor = MaterialTheme.colorScheme.logoSelect, // Color del texto cuando está seleccionado
                 unselectedTextColor = MaterialTheme.colorScheme.onSurface // Color del texto cuando no está seleccionado
             )
+
         )
         NavigationBarItem(
             icon = {
@@ -159,6 +165,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
         "Hotel" -> hotelesView()
         "Puntos" ->  PuntosView()
         "Restaurante"-> RestaurantView()
+        "Popular" ->  NavigationPopular(rememberNavController())
 
         // Agrega casos para otras pantallas si es necesario
     }

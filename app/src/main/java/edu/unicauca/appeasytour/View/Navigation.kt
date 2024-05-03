@@ -30,6 +30,11 @@ import edu.unicauca.appeasytour.R
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.*
+import androidx.navigation.compose.rememberNavController
+import edu.unicauca.appeasytour.View.CommentScreen.Navigation.AppNavigation
+import edu.unicauca.appeasytour.View.LoginScreen.LoginNavigation
+
+
 import androidx.compose.ui.res.stringResource
 import edu.unicauca.appeasytour.ui.theme.logoSelect
 
@@ -124,8 +129,8 @@ fun Navigation() {
                                 stringResource(id = R.string.Quality)
                             )
                         },
-                        selected = false,
-                        onClick = {},
+                        selected = currentScreen == "Reseñas",
+                        onClick = { currentScreen = "Reseñas" },
                         colors = NavigationBarItemDefaults.colors(
 
                             selectedIconColor = MaterialTheme.colorScheme.logoSelect,
@@ -193,7 +198,9 @@ fun Navigation() {
                     NavigationSup()
                 }
 
-                "Account" -> AppCuenta()
+               // "Account" -> AppCuenta()
+              //  "Account" -> LoginNavigation(rememberNavController())
+                "Reseñas" -> AppNavigation(rememberNavController())
             }
         }
 
