@@ -183,6 +183,7 @@ fun PopularItemRow(popularItem: PopularItem) {
     }
 }
 
+
 @Composable
 fun Rating(rating: Float) {
     Row {
