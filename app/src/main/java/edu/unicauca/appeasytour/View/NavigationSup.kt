@@ -22,77 +22,89 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import edu.unicauca.appeasytour.View.MapView.MapActivity
 import edu.unicauca.appeasytour.R
 
 @Composable
 fun NavigationSup(modifier: Modifier = Modifier) {
     var currentScreen by remember { mutableStateOf("Hotel") }
-    NavigationBar(
-        containerColor = MaterialTheme.colorScheme.surface,
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(8.dp)
 
-    )
-    {
+    // Definir una variable para controlar la navegación
+    var showMapScreen by remember { mutableStateOf(false) }
 
-        NavigationBarItem(
+    // Llamar a la función MapScreen si showMapScreen es true
+    if (showMapScreen) {
+        MapActivity().MapScreen()
+    } else {
 
-            icon = {
-                Icon(
-                    imageVector = Icons.Default.LocationOn,
-                    contentDescription = null
-                )
-            },
-            label = {
-                Text("Popular")
-            },
-            selected = false,
-            onClick = {}
-        )
-        NavigationBarItem(
-            icon = {
-                Icon(
-                    painter = painterResource(R.drawable.hotel__1_),
-                    contentDescription = null
-                )
-            },
-            label = {
-                Text("hoteles")
-            },
-            selected = true,
-            onClick = {
-                currentScreen = "Hotel"
-            }
-        )
-        NavigationBarItem(
-            icon = {
-                Icon(
-                    painter = painterResource(R.drawable.utensils_crossed__1_),
-                    contentDescription = null
-                )
-            },
-            label = {
-                Text("Restaurante")
-            },
-            selected = false,
-            onClick = {}
-        )
-        NavigationBarItem(
-            icon = {
-                Icon(
-                    painter = painterResource(R.drawable.goal__1_),
-                    contentDescription = null
-                )
-            },
-            label = {
-                Text("Puntos")
-            },
-            selected = false,
-            onClick = {}
-        )
+        NavigationBar(
+            containerColor = MaterialTheme.colorScheme.surface,
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(8.dp)
 
-        /*NavigationBarItem(
+        )
+        {
+
+            NavigationBarItem(
+
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.LocationOn,
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text("Popular")
+                },
+                selected = false,
+                onClick = {}
+            )
+            NavigationBarItem(
+                icon = {
+                    Icon(
+                        painter = painterResource(R.drawable.hotel__1_),
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text("hoteles")
+                },
+                selected = true,
+                onClick = {
+                    currentScreen = "Hotel"
+                }
+            )
+            NavigationBarItem(
+                icon = {
+                    Icon(
+                        painter = painterResource(R.drawable.utensils_crossed__1_),
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text("Restaurante")
+                },
+                selected = false,
+                onClick = {}
+            )
+            NavigationBarItem(
+                icon = {
+                    Icon(
+                        painter = painterResource(R.drawable.goal__1_),
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text("Puntos")
+                },
+                selected = false,
+                onClick = {
+                    showMapScreen = true
+                }
+            )
+
+            /*NavigationBarItem(
             icon = {
                 Icon(
                     imageVector = Icons.Filled.AutoAwesome,
@@ -106,18 +118,19 @@ fun NavigationSup(modifier: Modifier = Modifier) {
             selected = false,
             onClick = {}
         )*/
-    }
-    Column(
-        modifier = Modifier.padding(16. dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-    ) {
-        SearchBar();
-        FilterAndSortComponent();
-    }
+        }
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            SearchBar();
+            FilterAndSortComponent();
+        }
 
-    when (currentScreen) {
-        "Hotel" -> hotelesView()
-        // Agrega casos para otras pantallas si es necesario
+        when (currentScreen) {
+            //"Hotel" -> hotelesView()
+            // Agrega casos para otras pantallas si es necesario
+        }
     }
 }
 
