@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import edu.unicauca.appeasytour.View.CommentScreen.Views.AddScreen
 import edu.unicauca.appeasytour.View.CommentScreen.Views.CommentsScreen
 import edu.unicauca.appeasytour.View.CommentScreen.Views.UpdateScreen
+import edu.unicauca.appeasytour.View.cuentaView
 
 @Composable
 fun LoginNavigation(navController: NavHostController) {
