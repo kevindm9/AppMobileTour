@@ -26,6 +26,8 @@ import edu.unicauca.appeasytour.R
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun RegistroScreen(
+    navHostController: NavHostController,
+    viewModel: LoginScreenViewModel = viewModel()
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
