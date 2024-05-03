@@ -25,24 +25,23 @@ import edu.unicauca.appeasytour.ui.theme.AppEasyTourTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private lateinit var navHostController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             AppEasyTourTheme {
-                navHostController= rememberNavController()
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     // Call MyGoogleMaps function from MapActivity
-                    val mapActivity = MapActivity()
+                    //val mapActivity = MapActivity()
                     // Llamar a MapScreen
-                    mapActivity.MapScreen()
+                    //mapActivity.MapScreen()
                     //MapActivity().MyGoogleMaps()
                     Navigation()
+                    //LoginScreen()
                 }
             }
         }
