@@ -25,10 +25,8 @@ import edu.unicauca.appeasytour.R
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun RegistroScreen(
-    navHostController: NavHostController,
-    viewModel: LoginScreenViewModel = viewModel()
-) {
+fun RegistroScreen(navController: NavHostController,
+                   viewModel: LoginScreenViewModel= androidx.lifecycle.viewmodel.compose.viewModel()){
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
@@ -128,9 +126,4 @@ fun RegistroScreen(
             }
         }
     }
-}
-@Preview
-@Composable
-fun RegistroScreenPreview() {
-    RegistroScreen()
 }
