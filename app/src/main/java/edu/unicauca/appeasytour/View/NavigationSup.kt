@@ -157,7 +157,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
 
     when (currentScreen) {
         "Hotel" -> hotelesView()
-        "Puntos" ->  LoginScreen()
+        "Puntos" ->  PuntosView()
         "Restaurante"-> RestaurantView()
 
         // Agrega casos para otras pantallas si es necesario

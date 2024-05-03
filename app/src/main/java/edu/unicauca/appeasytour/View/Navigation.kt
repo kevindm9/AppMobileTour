@@ -53,7 +53,7 @@ fun Navigation() {
                     },
                     title = {
                         Text(
-                            "Easy Tour",
+                            "ColTour",
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
