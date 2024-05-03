@@ -45,8 +45,7 @@ import edu.unicauca.appeasytour.ui.theme.logoSelect
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation() {
-    val isBottomAppBarVisible = remember { mutableStateOf(false) }
-    val interactionSource = remember { MutableInteractionSource() }
+
 
 
     var currentScreen by remember { mutableStateOf("Home") }

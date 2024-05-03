@@ -37,11 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // Call MyGoogleMaps function from MapActivity
-                    //val mapActivity = MapActivity()
-                    // Llamar a MapScreen
-                    //mapActivity.MapScreen()
-                    //MapActivity().MyGoogleMaps()
+
                     Navigation()
                     //LoginScreen()
                 }
