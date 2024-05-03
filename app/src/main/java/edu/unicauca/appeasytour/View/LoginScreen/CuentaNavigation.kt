@@ -2,8 +2,13 @@ package edu.unicauca.appeasytour.View.LoginScreen
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import edu.unicauca.appeasytour.View.CommentScreen.Views.AddScreen
+import edu.unicauca.appeasytour.View.CommentScreen.Views.CommentsScreen
+import edu.unicauca.appeasytour.View.CommentScreen.Views.UpdateScreen
 import edu.unicauca.appeasytour.View.about
 import edu.unicauca.appeasytour.View.cuentaView
 
@@ -18,9 +23,11 @@ fun LoginNavigation(navController: NavHostController) {
         composable(route = Screens.LoginScreen.route){
             LoginScreen(navController)
         }
-
-        composable(route = Screens.about.route){
-            about()
+        composable(route =Screens.RegistroScreen.route){
+            RegistroScreen(navController)
+        }
+        composable(route =Screens.About.route){
+            about(navController)
         }
 
     }
@@ -29,5 +36,9 @@ fun LoginNavigation(navController: NavHostController) {
 sealed class Screens(val route:String){
     data object CuentaView:Screens("CuentaView")
     data object LoginScreen:Screens("loginScreen")
-    data object about:Screens("about")
+
+    data object RegistroScreen:Screens("RegistroScreen")
+
+    data object About:Screens("about")
+
 }

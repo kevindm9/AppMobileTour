@@ -2,6 +2,7 @@ package edu.unicauca.appeasytour.View.LoginScreen
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -50,7 +51,7 @@ import edu.unicauca.appeasytour.ui.theme.Roboto
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginScreen(
-    navHostController: NavHostController,
+    navController: NavHostController,
     viewModel: LoginScreenViewModel = viewModel()
 ) {
     val usuario = rememberSaveable { mutableStateOf("") }
@@ -59,6 +60,7 @@ fun LoginScreen(
     val valido = remember(usuario.value, password.value) {
         usuario.value.trim().isNotEmpty() && password.value.trim().isNotEmpty()
     }
+
 
     Surface{
         Column(modifier= Modifier.fillMaxSize()){
@@ -92,30 +94,14 @@ fun LoginScreen(
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-                ButtonConfiguration(
-                    TextId = "Registrar",
-                    inputValido = valido,
-                    email = usuario.value,
-                    password = password.value,
-                    viewModel = viewModel,
-                    isRegisterButton = true
-                )
-
-                Spacer(modifier = Modifier.height(30.dp))
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-
-                    Text(text = "O continua con",
-                        style= MaterialTheme.typography.labelMedium.copy(color= Color(0xFF64748B))
-                    )
-
-                    Spacer(modifier = Modifier.height(20.dp))
 
                     Row(
 
                         modifier= Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 75.dp),
+                            .padding(horizontal = 120.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ){
                         Spacer(modifier = Modifier.width(20.dp))
@@ -158,10 +144,12 @@ fun LoginScreen(
                             )
                         ){
                             append(" ")
+
                             append("Recuperala")
                         }
 
-                    })
+                    },
+                        Modifier.clickable { navController.navigate(Screens.RegistroScreen.route)})
                 }
 
 
