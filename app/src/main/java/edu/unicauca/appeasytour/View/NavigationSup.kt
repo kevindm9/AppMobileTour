@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import edu.unicauca.appeasytour.R
 import edu.unicauca.appeasytour.View.LoginScreen.LoginScreen
+import edu.unicauca.appeasytour.View.PopularScreen.Union
 
 @Composable
 fun NavigationSup(modifier: Modifier = Modifier) {
@@ -51,7 +52,9 @@ fun NavigationSup(modifier: Modifier = Modifier) {
                 Text("Popular")
             },
             selected = false,
-            onClick = {}
+            onClick = {
+                currentScreen="Popular"
+            }
         )
         NavigationBarItem(
             icon = {
@@ -126,6 +129,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
         "Hotel" -> hotelesView()
         "Puntos" ->  LoginScreen()
         "Restaurante"-> RestaurantView()
+        "Popular" ->  Union()
 
         // Agrega casos para otras pantallas si es necesario
     }

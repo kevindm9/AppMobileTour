@@ -5,4 +5,15 @@
     <string name="coltour">Coltour\n</string>
     <string name="vadi">Couture</string>
     <string name="couture">Couture\n</string>
+    <string name="parque_caldas">Parque Caldas</string>
+    <string name="puente_humilladero">Puente del Humilladero</string>
+    <string name="morro_tulcan">Morro de Tulcan</string>
+    <string name="iglesia_santo_domingo">Iglesia de Santo Domingo</string>
+    <string name="pueblito_patojo">Pueblito Patojo</string>
+    <string name="hotel_danm_monasterio">Hotel Damn Monasterio</string>
+    <string name="hotel_san_martin">Hotel San Martin</string>
+    <string name="hotel_torre_real">Hotel Torre Real</string>
+    <string name="te_puede_interesar"> Te puede Interesar</string>
+    <string name="alojamientos_economicos">Alojamientos Economicos</string>
+    <string name="hoteles_recomendados">Hoteles Recomendados</string>
 </resources>
