@@ -37,7 +37,6 @@ fun hotelesView(){
         Hotel("Hotel Dann Monasterio", "COP 150.000", "Desayuno incluido",5.0f,R.drawable.hotel_dann_monasterio__popay_n_02)
     )
 
-
     LazyColumn {
         items(hoteles) { hotel -> HotelCardView(hotel = hotel)
         }
@@ -94,5 +93,5 @@ fun HotelCardView(hotel: Hotel) {
 @Composable
 @Preview
 fun PrewHotels(){
-   hotelesView()
+  hotelesView()
 }

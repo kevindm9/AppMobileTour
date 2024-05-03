@@ -58,7 +58,7 @@ fun NavigationSup(modifier: Modifier = Modifier) {
             label = {
                 Text(stringResource(id = R.string.Popular))
             },
-            selected = false,
+            selected = currentScreen=="Popular",
             onClick = {
                 currentScreen="Popular"
             },

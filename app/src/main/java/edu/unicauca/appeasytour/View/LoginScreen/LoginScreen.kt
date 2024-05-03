@@ -2,6 +2,7 @@ package edu.unicauca.appeasytour.View.LoginScreen
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -49,7 +51,7 @@ import edu.unicauca.appeasytour.ui.theme.Roboto
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginScreen(
-    navHostController: NavHostController,
+    navController: NavHostController,
     viewModel: LoginScreenViewModel = viewModel()
 ) {
     val usuario = rememberSaveable { mutableStateOf("") }
@@ -58,6 +60,7 @@ fun LoginScreen(
     val valido = remember(usuario.value, password.value) {
         usuario.value.trim().isNotEmpty() && password.value.trim().isNotEmpty()
     }
+
 
     Surface{
         Column(modifier= Modifier.fillMaxSize()){
@@ -91,36 +94,16 @@ fun LoginScreen(
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-                ButtonConfiguration(
-                    TextId = "Registrar",
-                    inputValido = valido,
-                    email = usuario.value,
-                    password = password.value,
-                    viewModel = viewModel,
-                    isRegisterButton = true
-                )
-
-                Spacer(modifier = Modifier.height(30.dp))
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-
-                    Text(text = "O continua con",
-                        style= MaterialTheme.typography.labelMedium.copy(color= Color(0xFF64748B))
-                    )
-
-                    Spacer(modifier = Modifier.height(20.dp))
 
                     Row(
 
                         modifier= Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 75.dp),
+                            .padding(horizontal = 120.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ){
-                        SocialMediaLogin(icon = R.drawable.facebook,
-                            text ="Facebook",
-                            modifier = Modifier.weight(1f)) {
-                        }
                         Spacer(modifier = Modifier.width(20.dp))
 
                         SocialMediaLogin(icon = R.drawable.google,
@@ -161,10 +144,12 @@ fun LoginScreen(
                             )
                         ){
                             append(" ")
+
                             append("Recuperala")
                         }
 
-                    })
+                    },
+                        Modifier.clickable { navController.navigate(Screens.RegistroScreen.route)})
                 }
 
 
@@ -234,21 +219,20 @@ private fun TopSection() {
             modifier = Modifier.padding(top = 80.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Row {
 
-            Text(
-                text = stringResource(id = R.string.coltour),
-                style = MaterialTheme.typography.headlineLarge.copy(fontSize = 35.sp),
-                color = uiColor,
-                onTextLayout ={}
-            )
-            Spacer(modifier = Modifier.height(5.dp))
-            /*  Text(
-                  text = stringResource(id = R.string.validacion),
-                  style = MaterialTheme.typography.titleMedium,
-                  color = uiColor,
-                  onTextLayout ={}
-              )*/
-
+                Image(painter = painterResource(R.drawable.logo),
+                    contentDescription = "Descripción de la imagen",
+                    modifier=Modifier.size(60.dp))
+                Spacer(modifier = Modifier.width(5.dp))
+                Text(
+                    text = stringResource(id = R.string.coltour),
+                    style = MaterialTheme.typography.headlineLarge.copy(fontSize = 35.sp),
+                    color = uiColor,
+                    onTextLayout ={}
+                )
+                Spacer(modifier = Modifier.height(5.dp))
+            }
 
         }
         Text(

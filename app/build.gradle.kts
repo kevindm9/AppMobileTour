@@ -56,7 +56,7 @@ android {
 
 dependencies {
 
-    //dependencies de Hilt
+//dependencies de Hilt
     implementation("com.google.dagger:hilt-android:2.48.1")
     kapt("com.google.dagger:dagger-compiler:2.48.1")
     kapt("com.google.dagger:hilt-compiler:2.48.1")
