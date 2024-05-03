@@ -198,9 +198,11 @@ fun Navigation() {
                     NavigationSup()
                 }
 
-               // "Account" -> AppCuenta()
-              //  "Account" -> LoginNavigation(rememberNavController())
-                "Reseñas" -> AppNavigation(rememberNavController())
+                "Account" -> LoginNavigation(rememberNavController())
+
+                "Reseñas" -> {
+                    AppNavigation(rememberNavController())
+                }
             }
         }
 
