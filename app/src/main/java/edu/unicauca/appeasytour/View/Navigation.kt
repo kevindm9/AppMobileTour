@@ -7,7 +7,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.rounded.AccountCircle
@@ -30,6 +29,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.*
 import androidx.navigation.compose.rememberNavController
 import edu.unicauca.appeasytour.View.CommentScreen.Navigation.AppNavigation
+import edu.unicauca.appeasytour.View.LoginScreen.LoginNavigation
+import edu.unicauca.appeasytour.View.LoginScreen.cuentaView
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -157,7 +158,7 @@ fun Navigation() {
                     NavigationSup()
                 }
 
-                "Account" -> cuentaView()
+                "Account" -> LoginNavigation(rememberNavController())
                 "Reseñas" -> AppNavigation(rememberNavController())
             }
         }

@@ -37,6 +37,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.example.aplicacionesmoviles.SocialMediaLogin
 import com.example.aplicacionesmoviles.UsuarioInput
 import edu.unicauca.appeasytour.R
@@ -48,6 +49,7 @@ import edu.unicauca.appeasytour.ui.theme.Roboto
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginScreen(
+    navHostController: NavHostController,
     viewModel: LoginScreenViewModel = viewModel()
 ) {
     val usuario = rememberSaveable { mutableStateOf("") }

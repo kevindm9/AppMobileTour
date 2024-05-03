@@ -1,4 +1,4 @@
-package edu.unicauca.appeasytour.View
+package edu.unicauca.appeasytour.View.LoginScreen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.materialIcon
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -20,12 +19,12 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import edu.unicauca.appeasytour.R
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 
 @Composable
-fun cuentaView() {
+fun cuentaView(navHostController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -45,7 +44,7 @@ fun cuentaView() {
             ) {
                 Text("Inicia sesión para gestionar tus reservas y planificar fácilmente tu próximo viaje")
                 Button(
-                    onClick = { /* Handle login here */ },
+                    onClick = { navHostController.navigate(Screens.LoginScreen.route) },
                     modifier = Modifier
                         .width(200.dp)
                         .height(56.dp)
@@ -57,7 +56,7 @@ fun cuentaView() {
         }
 
         Button(
-            onClick = { /* Handle preferences here */ },
+            onClick = {  },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
@@ -97,10 +96,3 @@ fun cuentaView() {
     }
 }
 
-
-@Preview
-@Composable
-
-fun preCuenta(){
-    cuentaView()
-}

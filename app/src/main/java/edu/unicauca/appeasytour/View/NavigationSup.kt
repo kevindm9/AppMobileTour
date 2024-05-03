@@ -24,13 +24,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import edu.unicauca.appeasytour.R
+import edu.unicauca.appeasytour.View.LoginScreen.LoginNavigation
 import edu.unicauca.appeasytour.View.LoginScreen.LoginScreen
+import edu.unicauca.appeasytour.View.PopularScreen.NavigationPopular
 import edu.unicauca.appeasytour.View.PopularScreen.Union
 
 @Composable
 fun NavigationSup(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
-    var currentScreen by remember { mutableStateOf("Hotel") }
+    var currentScreen by remember { mutableStateOf("Popular") }
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
         modifier = modifier
@@ -127,9 +129,8 @@ fun NavigationSup(modifier: Modifier = Modifier) {
 
     when (currentScreen) {
         "Hotel" -> hotelesView()
-        "Puntos" ->  LoginScreen()
         "Restaurante"-> RestaurantView()
-        "Popular" ->  Union()
+        "Popular" ->  NavigationPopular(rememberNavController())
 
         // Agrega casos para otras pantallas si es necesario
     }

@@ -29,6 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import edu.unicauca.appeasytour.R
 
 private data class DrawableStringPair(
@@ -85,11 +86,11 @@ fun Tarjetas(
 }
 
 @Composable
-fun Button(onClick: () -> Unit){
+fun Button(navHostController: NavHostController){
     androidx.compose.material3.Button(
-        onClick = onClick,
+        onClick = {navHostController.navigate(Screens.MapScreen.route)},
         modifier = Modifier
-            .padding(top=16.dp,start=16.dp)
+            .padding(top = 16.dp, start = 16.dp)
             .background(color = Color.Blue, shape = RoundedCornerShape(percent = 50)),
     ) {
         Text(text = "Mapa", color = Color.White, fontSize = 16.sp)
@@ -153,11 +154,12 @@ fun FirstSession(
 }
 
 @Composable
-fun Union( modifier: Modifier = Modifier){
+fun Union( navHostController: NavHostController,
+           modifier: Modifier = Modifier){
     Surface(){
         Column (modifier= Modifier
             .verticalScroll(rememberScrollState())) {
-            Button(onClick = {})
+            Button(navHostController)
             FirstSession(R.string.te_puede_interesar) {
                 FilaInteres()
             }
