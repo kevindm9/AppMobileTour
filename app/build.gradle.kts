@@ -4,6 +4,8 @@ plugins {
     //id de Ksp para base de datos
     id("org.jetbrains.kotlin.kapt")
     id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
+    id("com.google.gms.google-services")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -54,16 +56,31 @@ android {
 
 dependencies {
 
+    //dependencies de Hilt
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:dagger-compiler:2.48.1")
+    kapt("com.google.dagger:hilt-compiler:2.48.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    //dependencies de firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.android.gms:play-services-auth:21.1.0")
 
     //dependencies para el map
     implementation ("com.google.maps.android:maps-compose:2.11.2")
     implementation ("com.google.android.gms:play-services-maps:18.2.0")
     implementation ("com.google.android.gms:play-services-auth:21.1.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    //implementation("androidx.appcompat:appcompat:1.6.1")
 
     //Room
     implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
-    //kapt("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
+    kapt("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
     implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
 
     implementation(libs.androidx.core.ktx)

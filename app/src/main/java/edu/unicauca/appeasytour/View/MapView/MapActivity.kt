@@ -1,4 +1,4 @@
-package edu.unicauca.appeasytour.View.MapView
+package edu.unicauca.appeasytour
 import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
@@ -21,6 +21,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.CameraPosition
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.Places
 import com.google.maps.android.compose.GoogleMap
@@ -31,8 +33,6 @@ import com.google.maps.android.compose.MarkerInfoWindowContent
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.google.maps.android.compose.rememberMarkerState
-import edu.unicauca.appeasytour.MainActivity
-import edu.unicauca.appeasytour.R
 
 class MapActivity: ComponentActivity(){
 
