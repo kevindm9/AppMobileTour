@@ -13,17 +13,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.google.android.libraries.places.api.Places
+import dagger.hilt.android.AndroidEntryPoint
+import edu.unicauca.appeasytour.View.CommentScreen.Navigation.AppNavigation
+import edu.unicauca.appeasytour.View.CommentScreen.Views.CommentsScreen
 import edu.unicauca.appeasytour.View.LoginScreen.LoginScreen
 import edu.unicauca.appeasytour.View.Navigation
 import edu.unicauca.appeasytour.ui.theme.AppEasyTourTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private lateinit var navHostController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
             AppEasyTourTheme {
+                navHostController= rememberNavController()
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -34,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     // Llamar a MapScreen
                     mapActivity.MapScreen()
                     //MapActivity().MyGoogleMaps()
-                    LoginScreen()
+                    Navigation()
                 }
             }
         }

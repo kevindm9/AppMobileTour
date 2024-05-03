@@ -28,6 +28,9 @@ import edu.unicauca.appeasytour.R
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.*
+import androidx.navigation.compose.rememberNavController
+import edu.unicauca.appeasytour.View.CommentScreen.Navigation.AppNavigation
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation() {
@@ -106,8 +109,8 @@ fun Navigation() {
                                 text = "Editar"
                             )
                         },
-                        selected = false,
-                        onClick = {}
+                        selected = currentScreen == "Reseñas",
+                        onClick = { currentScreen = "Reseñas" }
                     )
                     NavigationBarItem(
                         icon = {
@@ -155,6 +158,7 @@ fun Navigation() {
                 }
 
                 "Account" -> cuentaView()
+                "Reseñas" -> AppNavigation(rememberNavController())
             }
         }
 
