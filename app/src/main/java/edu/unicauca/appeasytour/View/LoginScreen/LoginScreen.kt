@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -117,10 +118,6 @@ fun LoginScreen(
                             .padding(horizontal = 75.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ){
-                        SocialMediaLogin(icon = R.drawable.facebook,
-                            text ="Facebook",
-                            modifier = Modifier.weight(1f)) {
-                        }
                         Spacer(modifier = Modifier.width(20.dp))
 
                         SocialMediaLogin(icon = R.drawable.google,
@@ -234,21 +231,20 @@ private fun TopSection() {
             modifier = Modifier.padding(top = 80.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Row {
 
-            Text(
-                text = stringResource(id = R.string.coltour),
-                style = MaterialTheme.typography.headlineLarge.copy(fontSize = 35.sp),
-                color = uiColor,
-                onTextLayout ={}
-            )
-            Spacer(modifier = Modifier.height(5.dp))
-            /*  Text(
-                  text = stringResource(id = R.string.validacion),
-                  style = MaterialTheme.typography.titleMedium,
-                  color = uiColor,
-                  onTextLayout ={}
-              )*/
-
+                Image(painter = painterResource(R.drawable.logo),
+                    contentDescription = "Descripción de la imagen",
+                    modifier=Modifier.size(60.dp))
+                Spacer(modifier = Modifier.width(5.dp))
+                Text(
+                    text = stringResource(id = R.string.coltour),
+                    style = MaterialTheme.typography.headlineLarge.copy(fontSize = 35.sp),
+                    color = uiColor,
+                    onTextLayout ={}
+                )
+                Spacer(modifier = Modifier.height(5.dp))
+            }
 
         }
         Text(

@@ -7,7 +7,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import edu.unicauca.appeasytour.MapActivity
 import edu.unicauca.appeasytour.View.LoginScreen.LoginScreen
-import edu.unicauca.appeasytour.View.LoginScreen.cuentaView
 
 @Composable
 fun NavigationPopular(navController: NavHostController) {

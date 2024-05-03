@@ -2,9 +2,9 @@
     <string name="app_name">AppEasyTour</string>
     <string name="Search">Search</string>
     <string name="inicio_sesion">Iniciar Sesion</string>
-    <string name="coltour">Coltour\n</string>
+    <string name="coltour">Coltour</string>
     <string name="vadi">Couture</string>
-    <string name="couture">Couture\n</string>
+    <string name="couture">Couture</string>
     <string name="parque_caldas" translatable="false">Parque Caldas</string>
     <string name="puente_humilladero" translatable="false">Puente del Humilladero</string>
     <string name="morro_tulcan" translatable="false">Morro de Tulcan</string>
