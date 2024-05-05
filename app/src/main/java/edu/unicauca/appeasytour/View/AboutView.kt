@@ -35,12 +35,12 @@ fun about(navController: NavHostController){
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(painter = painterResource(edu.unicauca.appeasytour.R.drawable.logo), contentDescription = "Descripción de la imagen")
-            Text(text ="ColTour una plataforma que tiene como objetivo promover el turismo, y guiar a las personas que " +
+            Text(text ="ColTour una App que tiene como objetivo promover el turismo, y guiar a las personas que " +
                     "visitan la ciudad haciendo uso de una interfaz llamativa, fácil de comprender.")
             Spacer(modifier = Modifier.height(16.dp))
             Text(text ="Version App: $versionName")
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text ="Desarrolladores:\n" +
+            Text(text ="Equipo de Desarrollo:\n" +
                     "Julia Sofia Garcia Gaviria\n" +
                     "Jose Julian Avirama Valencia\n"+
                     "Steben David Higidio\n"+
@@ -48,7 +48,7 @@ fun about(navController: NavHostController){
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(text ="Tutor:\n " +
-                    "Dr. Cristhian N Figueroa M"
+                    "Ph.D. Cristhian N Figueroa M"
             )
             Spacer(modifier = Modifier.height(30.dp))
             Text(text =" © all right reserved"
